@@ -5,9 +5,7 @@ get_ip() {
   ip a show dev eth0 | grep "inet " | cut -d' ' -f 6 | cut -d'/' -f 1
 }
 
-echo updating dndtools website...
-cd $DNDTOOLS_REPO
-git pull
+cd $DNDTOOLS_DIR
 
 echo updating requirements...
 pip install -r requirements.txt
@@ -16,7 +14,11 @@ cd dndtools
 
 echo updating database...
 python manage.py syncdb --all
-python manage.py migrate --fake
+
+if [ ! -f "dndproject/local.py" ]
+then
+  ln -s $DATA_DIR/local.py dndproject/local.py
+fi
 
 echo ========================================================
 echo 
