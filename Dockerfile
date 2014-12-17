@@ -11,9 +11,10 @@ RUN apt-get update && apt-get install -y \
   wget \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV DNDTOOLS_VERSION=master \
-  DNDTOOLS_DIR=/dndtoolsrepo \
-  DATA_DIR=/data
+# on multiple lines, because docker hub's docker isn't up to date
+ENV DNDTOOLS_VERSION master
+ENV DNDTOOLS_DIR /dndtoolsrepo
+ENV DATA_DIR /data
 
 COPY files/ $DATA_DIR/
 
