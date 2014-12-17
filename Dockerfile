@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y \
   wget \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV DNDTOOLS_VERSION=1.0.0 \
-  DNDTOOLS_DIR=/dndtoolsrepo \
-  DATA_DIR=/data
+ENV DNDTOOLS_VERSION 1.0.0
+ENV DNDTOOLS_DIR /dndtoolsrepo
+ENV DATA_DIR /data
 
 COPY files/ $DATA_DIR/
 
