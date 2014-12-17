@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # clone repo
 ENV DNDTOOLS_REPO /dndtoolsrepo
-RUN git clone https://github.com/antoinealb/dndtools.git $DNDTOOLS_REPO
+RUN git clone https://github.com/dndtools/dndtools.git $DNDTOOLS_REPO
 WORKDIR $DNDTOOLS_REPO
 
 # load data into $DATA_DIR
