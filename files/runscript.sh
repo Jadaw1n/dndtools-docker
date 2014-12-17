@@ -15,9 +15,9 @@ cd dndtools
 echo updating database...
 python manage.py syncdb --all
 
-if [ ! -f "dndproject/local.py" ]
+if [ ! -f "local.py" ]
 then
-  ln -s $DATA_DIR/local.py dndproject/local.py
+  ln -s $DATA_DIR/local.py local.py
 fi
 
 echo ========================================================

@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
   wget \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV DNDTOOLS_VERSION=master \
+ENV DNDTOOLS_VERSION=1.0.0 \
   DNDTOOLS_DIR=/dndtoolsrepo \
   DATA_DIR=/data
 
@@ -22,7 +22,7 @@ RUN wget https://github.com/dndtools/dndtools/archive/$DNDTOOLS_VERSION.tar.gz -
   cd $DNDTOOLS_DIR && \
   pip install https://github.com/etianen/django-reversion/archive/release-1.3.3.zip && \
   pip install -r requirements.txt && \
-  ln -s $DATA_DIR/local.py dndtools/dndproject/local.py
+  ln -s $DATA_DIR/local.py dndtools/local.py
 
 EXPOSE 8000
 
