@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
+import random
+import string
+
 # Change this to False if you run it in development
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,8 +13,8 @@ DATABASES = {
     'NAME': '/data/dndtools.sqlite',
   }
 }
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'TODO FILL'
+# Read from env or generate random key
+SECRET_KEY = os.getenv('SECRET_KEY', ''.join(random.SystemRandom().choice(string.printable) for _ in range(64)))
 SITE_ID = 1
 if DEBUG:
   INTERNAL_IPS = ('127.0.0.1',)
@@ -29,5 +32,5 @@ if DEBUG:
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
   )
-RECAPTCHA_PUBLIC = 'TODO FILL'
-RECAPTCHA_PRIVATE = 'TODO FILL'
+RECAPTCHA_PUBLIC = os.getenv('RECAPTCHA_PUBLIC', '')
+RECAPTCHA_PRIVATE = os.getenv('RECAPTCHA_PRIVATE', '')
