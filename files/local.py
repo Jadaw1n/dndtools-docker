@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import os
-
-
+import random
+import string
 
 DIRNAME = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,7 +20,7 @@ DATABASES = {
 
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'TODO FILL'
+SECRET_KEY = os.getenv('SECRET_KEY', ''.join(random.SystemRandom().choice(string.printable) for _ in range(64)))
 
 MEDIA_ROOT = os.path.join(DIRNAME, 'static/')
 
@@ -31,5 +31,5 @@ INTERNAL_IPS = ('0.0.0.0', )
 TEMPLATE_DIRS = (
     os.path.join(DIRNAME, 'templates/'),
 )
-RECAPTCHA_PUBLIC = 'TODO FILL'
-RECAPTCHA_PRIVATE = 'TODO FILL'
+RECAPTCHA_PUBLIC = os.getenv('RECAPTCHA_PUBLIC', '')
+RECAPTCHA_PRIVATE = os.getenv('RECAPTCHA_PRIVATE', '')
