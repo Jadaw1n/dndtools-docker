@@ -23,3 +23,21 @@ docker run --rm -p 8000:8000 -it \
 
 ##### Updating
 ```docker pull jadaw1n/dndtools-docker:master```
+
+### Configuration variables
+
+Name | Default value
+---- | -------------
+SECRET_KEY | random generated on startup
+RECAPTCHA_PUBLIC | *empty*
+RECAPTCHA_PRIVATE | *empty*
+(more on request)
+
+Use them like this:
+```
+docker run --rm -p 8000:8000 -it \
+  -v /local/path/to/dndtools.sqlite:/data/dndtools.sqlite \
+  -e RECAPTCHA_PUBLIC=something \
+  -e RECAPTCHA_PRIVATE="something complex" \
+  jadaw1n/dndtools-docker:master
+```
